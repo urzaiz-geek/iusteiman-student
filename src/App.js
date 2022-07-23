@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import LoginPage from "./components/LoginPage";
+import SubscriberForm from "./components/SubscribeForm";
+import FolderPrompt from "./components/FolderPrompt";
+import Assist from "./components/Assist";
+import NotFound from "./components/NotFound";
+import NavigationBar from "./components/NavigationBar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <NavigationBar />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/inscriptions/new" element={<SubscriberForm />} />
+        <Route path="/inscriptions/update" element={<FolderPrompt />} />
+        <Route path="/effects/file" element={<FolderPrompt />} />
+        <Route path="/effects/quitus" element={<FolderPrompt />} />
+        <Route path="/assist" element={<Assist />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  </>
+);
 
 export default App;
